@@ -1,0 +1,42 @@
+{% extends 'layout.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+
+    <div class="main">
+        <!-- <h1><b>CosmicQuakes</b></h1> -->
+        <div class="form">
+            <input type="file" id="file">
+            <button type="submit" id="submit">Submit</button>
+        </div>
+        <div class="visualizer">
+
+        </div>
+    </div>
+
+    <script>
+        document.querySelector("#submit").addEventListener('click', (e) => {
+            let file = document.querySelector("#file").files[0];
+
+            let formData = new FormData();
+            formData.append("file", file);
+
+            fetch('/api/v1/processFile/', {
+                method: "POST",
+                contentType: "application/json",
+                body: formData,
+            })
+            .then(async(response) => {
+                if (response.status === 401) {
+                    window.location.href = '/';
+                }
+
+                output = await response.json();
+                output = output["output"];
+
+                console.log(output);
+            })
+        });
+    </script>
+{% endblock %}

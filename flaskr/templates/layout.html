@@ -1,0 +1,7 @@
+<!doctype html>
+<title>{% block title %}{% endblock %} - CosmicQuakes</title>
+<link rel="stylesheet" href="{{ url_for('static', filename='layout.css') }}">
+
+<section class="content">
+  {% block body %}{% endblock %}
+</section>
