@@ -10,8 +10,7 @@
             <input type="file" id="file">
             <button type="submit" id="submit">Submit</button>
         </div>
-        <div class="visualizer">
-
+        <div class="visualizer" id="1">
         </div>
     </div>
 
@@ -24,18 +23,19 @@
 
             fetch('/api/v1/processFile/', {
                 method: "POST",
-                contentType: "application/json",
+                contentType: "image/png",
                 body: formData,
             })
             .then(async(response) => {
                 if (response.status === 401) {
                     window.location.href = '/';
                 }
+                console.log(response.type);
 
-                output = await response.json();
-                output = output["output"];
-
-                console.log(output);
+                const responseBlob = await response.blob()
+                const img = document.createElement('img')
+                img.src = URL.createObjectURL(responseBlob)
+                document.getElementById('1').appendChild(img);
             })
         });
     </script>
