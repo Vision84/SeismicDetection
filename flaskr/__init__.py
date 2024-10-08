@@ -84,7 +84,7 @@ def create_app(test_config=None):
                 ma = data_cat['time_rel(sec)'].tolist().index(max(data_cat['time_rel(sec)'].tolist()))
                 mii = min(data_cat['velocity(m/s)'].tolist())
                 maa = max(data_cat['velocity(m/s)'].tolist())
-                s = 10000
+                s = 20000
                 # Capture the result of thething() and return it
                 return thething(mi, ma, mii, maa, s, n=[])
 
@@ -117,7 +117,7 @@ def create_app(test_config=None):
                         if pred.item() == 1:
                             o=data_cat['time_rel(sec)'].tolist()[i]
                             p=data_cat['time_rel(sec)'].tolist()[c]
-                            s = s // 10
+                            s = s // 2
                             n.append(o)
                             if s==0:
                                 break
