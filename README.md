@@ -4,6 +4,8 @@ Implementation for NASA Space Apps Challenge 2024 Seismic Detection Across the S
 Link to our colab notebook: https://colab.research.google.com/drive/1YL0aAwL80CsV0mz1SVSIsPZNvo1OA2zM?usp=sharing
 ### Results
 The results were added to catalogs: lunar-s12gradeB.csv, lunar-s15gradeA.csv, lunar-s15gradeB.csv, lunar-s16gradeA.csv, results-mars.csv.
+
+
 Seismic events are usually characterized by a sudden increase in velocity. To detect such events, we employ a recursive segmentation algorithm that iteratively divides the time-series data into smaller segments, identifies the intervals where a seismic event is likely to occur, and further narrows down the segments to precisely locate the event start time.
 
 ## Initial Segmentation:
